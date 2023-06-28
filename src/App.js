@@ -28,12 +28,15 @@ function App() {
     if(mode === 'light'){
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
-      showAlert("dark mode has been enabled","success")
+      showAlert("dark mode has been enabled","success");
+      document.title = "textutils - dark mode";
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
-      showAlert("light mode has been enabled","success")
+      showAlert("light mode has been enabled","success");
+      document.title = "textutils - light mode";
+
     }
   }
 
