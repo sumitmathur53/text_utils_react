@@ -2,9 +2,10 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForms from "./components/TextForms";
-// import About from "./components/About";
+import About from "./components/About";
 import React, { useState } from 'react';  // imrs to import
 import Alert from './components/Alert'
+import { BrowserRouter, Route, Routes,Link } from "react-router-dom";
 
 
 function App() {
@@ -42,19 +43,33 @@ function App() {
 
 
   return (
-    <>
-      {/* <Navbar title="textutils" aboutText="About" mode = {mode} /> */}
+    
+     <>
+      <BrowserRouter>
+        <Navbar title="TextUtils2" aboutText="TextAbouts" mode={mode} toggleMode={toggleMode} />
+          
+                  
+        <Alert alert={alert} />
+
+        <div className="container my-4" mode={mode}>
+          <Routes>
+
+            <Route exact path="/about" element={<About />}></Route>
+
+            <Route exact path="/"
+              element={
+                <TextForms showAlert={showAlert} heading="Enter Text to analyze " mode={mode} />                
+              }
+            >
+
+            </Route>
+
+          </Routes>
+
+        </div>
+      </BrowserRouter>
+      </>
       
-      <Navbar title="textutils" mode = {mode} toggleMode={toggleMode}/>
-      <Alert alert={alert}/>
-
-      <div className="container my-3">
-        <TextForms showAlert={showAlert} heading = "Enter the text to analyse" mode={mode}/>
-      </div>
-
-      {/* <About/> */}
-
-    </>
   );
 }
 
